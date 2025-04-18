@@ -38,7 +38,7 @@ This is a simple and beginner-friendly **Task Management System** built with Lar
 
 ### 💡 Clean UI
 - Built with **Bootstrap 5** for a responsive and modern design.
-- Smooth animations with **AOS (Animate on Scroll)**.
+
 
 ---
 
