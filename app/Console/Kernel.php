@@ -13,11 +13,18 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
-    }
 
+protected function schedule(Schedule $schedule)
+{
+    $schedule->call(function () {
+        $tasks = \App\Models\Task::whereDate('due_date', now()->addDay()->toDateString())->get();
+
+        foreach ($tasks as $task) {
+            $user = $task->user; // Assuming tasks are assigned to users
+            $user->notify(new \App\Notifications\TaskReminderNotification($task));
+        }
+    })->daily();
+}
     /**
      * Register the commands for the application.
      *

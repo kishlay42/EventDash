@@ -56,18 +56,27 @@
                 </ul>
 
                 <!-- Dropdown -->
-                <div class="dropdown ms-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle fs-4 me-2"></i>
-                        <span>User</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
-                    </ul>
-                </div>
+                <!-- Dropdown -->
+<div class="dropdown ms-4">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle fs-4 me-2"></i>
+        <span>{{ Auth::user()->name ?? 'User' }}</span> <!-- Display the logged-in user's name -->
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <!-- Logout Form -->
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="dropdown-item text-danger">
+                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>
             </div>
         </div>
     </nav>
