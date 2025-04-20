@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Task::query();
+        $query = Task::where('user_id', Auth::id()); // Fetch tasks only for the authenticated user
 
         // Apply priority filter if provided
         if ($request->has('priority') && $request->priority) {
@@ -47,14 +47,20 @@ class TaskController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $task = Task::create($request->all());
+        // Associate the task with the authenticated user
+        $task = Auth::user()->tasks()->create([
+            'name' => $request->name,
+            'status' => $request->status,
+            'due_date' => $request->due_date,
+            'priority' => $request->priority,
+            'description' => $request->description,
+        ]);
 
         // Send task reminder notification
         Notification::send(Auth::user(), new TaskReminderNotification($task));
 
         return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
-    
 
     public function edit(Task $task)
     {
@@ -68,19 +74,28 @@ class TaskController extends Controller
             'status' => 'required'
         ]);
 
+        // Ensure only the owner can update the task
+        if ($task->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $task->update($request->all());
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
     }
-public function destroy(Task $task)
+
+    public function destroy(Task $task)
     {
+        // Ensure only the owner can delete the task
+        if ($task->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
     }
 
-
-// filepath: d:\int221\laravelproj\task-manager-main\app\Http\Controllers\TaskController.php
-public function create()
-{
-    return view('tasks.create'); // Ensure you have a `tasks/create.blade.php` view
-}
+    public function create()
+    {
+        return view('tasks.create'); // Ensure you have a `tasks/create.blade.php` view
+    }
 }

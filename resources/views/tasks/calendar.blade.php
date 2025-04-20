@@ -60,11 +60,7 @@
 
 <style>
     /* Custom Purple Theme */
-    body {
-        background-color: #f3f0f6; /* Light purple background */
-        font-family: Arial, sans-serif;
-    }
-
+   
     h2.text-purple {
         color:rgb(144, 55, 199); /* Deep Purple */
         font-weight: bold;
@@ -72,7 +68,7 @@
 
     /* Calendar Container */
     #calendar {
-        background-color: #ffffff;
+        background-color:rgb(245, 231, 218);
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

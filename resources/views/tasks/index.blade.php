@@ -4,7 +4,7 @@
 <!-- Hero Section -->
 <div class="text-white text-center py-5 rounded-lg shadow-lg mb-4 " 
      style="background-image: url('https://i.pinimg.com/736x/e1/f5/7c/e1f57cf154cb64e8f75be73d7f4c8f45.jpg'); 
-            background-size: fill; background-position: center;">
+            background-size: contain; background-position:center; height: 320px;">
     <h1 class="fw-bold display-4">Manage Your Events</h1>
     <p class="lead">Organize, prioritize, and track your daily events efficiently.</p>
 </div>
