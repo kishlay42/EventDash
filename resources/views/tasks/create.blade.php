@@ -3,12 +3,12 @@
 @section('content')
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
-        <h2 class="text-center mb-4"><i class="bi bi-plus-circle"></i> Create Task</h2>
+        <h2 class="text-center mb-4"><i class="bi bi-plus-circle"></i> Create Event</h2>
         <form action="{{ route('tasks.store') }}" method="POST" data-aos="fade-up">
             @csrf
             <!-- Task Name -->
             <div class="form-group mb-3">
-                <label for="name" class="form-label"><i class="bi bi-card-text"></i> Task Name</label>
+                <label for="name" class="form-label"><i class="bi bi-card-text"></i> Event Name</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Enter task name" required>
             </div>
 
@@ -47,7 +47,7 @@
             <!-- Buttons -->
             <div class="d-flex justify-content-between">
                 <a href="{{ route('tasks.index') }}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back</a>
-                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save Task</button>
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save Event</button>
             </div>
         </form>
     </div>

@@ -2,44 +2,51 @@
 
 @section('content')
 <div class="container mt-5">
-    <h2 class="text-center mb-4">📊 Dashboard Overview</h2>
+    <h2 class="text-center mb-5 fw-bold" style="color: #343a40;">🚀 Dashboard Overview</h2>
 
-    <!-- Summary Cards -->
-    <div class="row text-center mb-5">
+    <!-- Modern Summary Cards -->
+    <div class="row g-4 mb-5">
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 p-4" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
-                <h5>Total Tasks</h5>
-                <h2 class="fw-bold">{{ $totalTasks }}</h2>
+            <div class="card border-0 shadow-lg text-white" style="background: linear-gradient(135deg, #1e3c72, #2a5298); border-radius: 1rem;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Events</h5>
+                    <h2 class="fw-bold display-6">{{ $totalTasks }}</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 p-4" style="background: linear-gradient(135deg, #28a745, #218838); color: white;">
-                <h5>Total Hours Logged</h5>
-                <h2 class="fw-bold">{{ $totalHours }}</h2>
+            <div class="card border-0 shadow-lg text-white" style="background: linear-gradient(135deg, #00b09b, #96c93d); border-radius: 1rem;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Hours Logged</h5>
+                    <h2 class="fw-bold display-6">{{ $totalHours }}</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 p-4" style="background: linear-gradient(135deg, #ffc107, #e0a800); color: white;">
-                <h5>Pending Tasks</h5>
-                <h2 class="fw-bold">{{ $taskStatus['Pending'] ?? 0 }}</h2>
-            </div>
-        </div>
-    </div>
-
-    <!-- Status Chart -->
-    <!-- Status Chart -->
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-sm border-0 p-4">
-            <h5 class="text-center mb-4">Task Status Distribution</h5>
-            <div class="d-flex justify-content-center">
-                <div class="chart-container" style="position: relative; height: 300px; width: 300px;">
-                    <canvas id="taskStatusChart"></canvas>
+            <div class="card border-0 shadow-lg text-white" style="background: linear-gradient(135deg, #f7971e, #ffd200); border-radius: 1rem;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Pending Events</h5>
+                    <h2 class="fw-bold display-6">{{ $taskStatus['Pending'] ?? 0 }}</h2>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Modern Chart Card -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0" style="border-radius: 1rem;">
+                <div class="card-body p-5">
+                    <h5 class="text-center mb-4 fw-semibold" style="color: #343a40;">📈 Event Status Distribution</h5>
+                    <div class="d-flex justify-content-center">
+                        <div style="height: 300px; width: 300px;">
+                            <canvas id="taskStatusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -50,17 +57,25 @@
         const statusData = @json($taskStatus);
 
         new Chart(document.getElementById('taskStatusChart'), {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: Object.keys(statusData),
                 datasets: [{
                     label: 'Tasks',
                     data: Object.values(statusData),
-                    backgroundColor: ['#f39c12', '#3498db', '#2ecc71', '#e74c3c'],
+                    backgroundColor: [
+                        '#f39c12',  // Pending
+                        '#2980b9',  // In Progress
+                        '#27ae60',  // Completed
+                        '#e74c3c'   // Overdue/Other
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff',
                 }]
             },
             options: {
                 responsive: true,
+                cutout: '70%',
                 plugins: {
                     legend: {
                         position: 'bottom',
