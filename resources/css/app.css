@@ -2,10 +2,10 @@
    Base Variables and Colors
 ============================ */
 :root {
-  --primary-color: #4361ee;
-  --primary-hover: #3a56d4;
-  --secondary-color: #4f46e5;
-  --secondary-hover: #4338ca;
+  --primary-color: #f7e163;
+  --primary-hover: #f7e163;
+  --secondary-color: #f7e163;
+  --secondary-hover: #fbea87;
   --danger-color: #ef4444;
   --danger-hover: #dc2626;
   --success-color: #10b981;
@@ -30,7 +30,8 @@ body {
   font-family: 'Inter', 'Nunito', sans-serif;
   color: var(--gray-dark);
   line-height: 1.6;
-  background: linear-gradient(to right, #f6f9fc, #e0f7fa);
+  /* background: linear-gradient(to right, #f6f9fc, #e0f7fa); */
+  background-color: #f5f3f1;
   min-height: 100vh;
 }
 
@@ -204,10 +205,13 @@ body {
  Navbar Styling (Updated)
 ============================ */
 .navbar {
-  background: linear-gradient(135deg, #075bd8, #74a7f5);
-  color: white;
+  background: linear-gradient(135deg, #f8f8f5, #fefefd);
   box-shadow: var(--shadow-md);
   transition: var(--transition);
+  border-radius: 20px;
+  border: #1f2937 1px solid;
+  margin: 1rem 1rem;
+  
 }
 
 .navbar-brand {

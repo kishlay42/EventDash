@@ -57,73 +57,78 @@
         calendar.render();
     });
 </script>
-
 <style>
     /* Custom Purple Theme */
-   
     h2.text-purple {
-        color:rgb(144, 55, 199); /* Deep Purple */
+        color: rgb(199, 165, 55); /* Deep Purple */
         font-weight: bold;
     }
 
     /* Calendar Container */
     #calendar {
-        background-color:rgb(245, 231, 218);
-        border-radius: 12px;
+        background: linear-gradient(rgba(178, 208, 251, 0.65),
+                    rgba(202, 255, 187, 0.25)),
+                url('https://i.pinimg.com/736x/48/0c/ef/480cefea0e8a2b9b6a99b9ef6d17d4ee.jpg') no-repeat center center;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: black; /* Set default font color to black */
     }
 
-    /* Event styling based on priority */
+    /* FullCalendar Header Toolbar */
+    .fc-toolbar {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* FullCalendar Day Cells */
+    .fc-daygrid-day {
+        background-color: rgba(248, 247, 247, 0.8);
+        border-radius: 20px;
+        color: black; /* Ensure day cell text is black */
+    }
+
+    /* Ensure day numbers have black font color */
+    .fc .fc-daygrid-day-number {
+        color: black !important; /* Force black font color for day numbers */
+    }
+
+    /* Override the default link color inside the calendar */
+    .fc a {
+        color: black !important; /* Force black font color for links in the calendar */
+        text-decoration: none; /* Remove underline if not needed */
+    }
+
+    /* Highlight Today's Date */
+   
+    /* Event Styles */
+    .fc-event {
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 5px;
+        color: black !important; /* Force black font color for events */
+    }
+
+    /* Priority-Based Event Colors */
     .fc-event-urgent {
-        background-color: #9c27b0; /* Purple */
-        border-color: #7b1fa2;
-        color: white;
+        background-color: #dc3545 !important; /* Red for urgent tasks */
+        color: black !important; /* Black text for urgent tasks */
     }
 
     .fc-event-important {
-        background-color: #ba68c8; /* Light Purple */
-        border-color: #9c27b0;
-        color: white;
+        background-color: #ffc107 !important; /* Yellow for important tasks */
+        color: black !important; /* Black text for important tasks */
     }
 
-    .fc-event-secondary {
-        background-color: #d1c4e9; /* Lighter Purple */
-        border-color: #9c27b0;
-        color: black;
-    }
-
-    /* Hover effects on events */
-    .fc-event:hover {
-        opacity: 0.8;
-    }
-
-    /* Header and Navigation Buttons */
-    .fc-prev-button, .fc-next-button, .fc-today-button {
-        background-color: #9c27b0;
-        border-radius: 50%;
-        color: white;
-    }
-
-    .fc-prev-button:hover, .fc-next-button:hover, .fc-today-button:hover {
-        background-color: #7b1fa2;
-    }
-
-    .fc-toolbar-title {
-        color: #6a1b9a; /* Deep Purple */
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .fc-button-primary {
-        background-color: #9c27b0;
-        border-color: #7b1fa2;
-        color: white;
-    }
-
-    .fc-button-primary:hover {
-        background-color: #7b1fa2;
-        border-color: #6a1b9a;
+    .fc-event-normal {
+        background-color: #6c757d !important; /* Gray for normal tasks */
+        color: black !important; /* Black text for normal tasks */
     }
 </style>
 @endsection

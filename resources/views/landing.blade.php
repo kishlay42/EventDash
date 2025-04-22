@@ -18,16 +18,17 @@
             color: #333;
         }
 
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(255, 126, 95, 0.65),
                     rgba(254, 180, 123, 0.75)),
                 url('https://i.pinimg.com/736x/c7/47/70/c7477038ebb21e1378063495df465b09.jpg') no-repeat center center;
             background-size: cover;
             color: white;
-            padding: 120px 0;
+            padding: 100px 0;
             text-align: center;
+            border-radius: 1rem;
         }
-
 
         .hero h1 {
             font-size: 3.5rem;
@@ -52,6 +53,7 @@
             color: #ff7e5f;
         }
 
+        /* Features Section */
         .features {
             padding: 80px 0;
         }
@@ -61,6 +63,7 @@
             font-size: 2.75rem;
             font-weight: 700;
             margin-bottom: 60px;
+            color: #343a40;
         }
 
         .feature-card {
@@ -90,13 +93,20 @@
         .feature-card-body h5 {
             font-weight: 600;
             margin-bottom: 10px;
+            color: #343a40;
         }
 
+        .feature-card-body p {
+            color: #6c757d;
+        }
+
+        /* Call-to-Action Section */
         .cta {
             background: linear-gradient(135deg, #f2994a, #f2c94c);
             color: #212121;
             padding: 80px 0;
             text-align: center;
+            border-radius: 1rem;
         }
 
         .cta h2 {
@@ -116,6 +126,7 @@
             border-radius: 50px;
         }
 
+        /* Footer */
         footer {
             background-color: #222;
             color: #bbb;
@@ -132,7 +143,7 @@
 <body>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero mb-5">
         <div class="container">
             <h1>Welcome to EventDash</h1>
             <p>The ultimate solution to manage your events, tasks, and goals effortlessly.</p>
@@ -153,7 +164,7 @@
                         <img src="https://i.pinimg.com/736x/9a/fa/65/9afa65aa52f9d92bedc1c1a98735440c.jpg" alt="Event Management" />
                         <div class="feature-card-body">
                             <h5>Smart Daily Event Management</h5>
-                            <p class="text-muted">Organize your workflow efficiently with intuitive on click calendar features.</p>
+                            <p>Organize your workflow efficiently with intuitive on-click calendar features.</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +173,7 @@
                         <img src="https://i.pinimg.com/736x/51/75/bd/5175bdbc00bc637a9cb9c29ae814e0e4.jpg" alt="Calendar Integration" />
                         <div class="feature-card-body">
                             <h5>Seamless Calendar Sync</h5>
-                            <p class="text-muted">Stay on top of your schedule by syncing events directly to your calendar.</p>
+                            <p>Stay on top of your schedule by syncing events directly to your calendar.</p>
                         </div>
                     </div>
                 </div>
@@ -171,7 +182,7 @@
                         <img src="https://i.pinimg.com/736x/11/2a/ab/112aab22997e581e1c6e219ffdf06ffd.jpg" alt="Reports" />
                         <div class="feature-card-body">
                             <h5>Insightful Analytics</h5>
-                            <p class="text-muted">Track your productivity and make data-driven decisions with smart reports.</p>
+                            <p>Track your productivity and make data-driven decisions with smart reports.</p>
                         </div>
                     </div>
                 </div>
@@ -180,7 +191,7 @@
     </section>
 
     <!-- Call-to-Action -->
-    <section class="cta">
+    <section class="cta mt-5">
         <div class="container">
             <h2>Boost Your Efficiency Today</h2>
             <p>Thousands have already streamlined their work with EventDash. You should too.</p>
@@ -189,7 +200,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="mt-5">
         <div class="container text-center">
             <p>&copy; {{ date('Y') }} EventDash. Built with passion and productivity.</p>
         </div>
